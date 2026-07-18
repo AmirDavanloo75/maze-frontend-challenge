@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Yekan Bakh";
+  src: url("~/assets/fonts/YekanBakh-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Yekan Bakh";
+  src: url("~/assets/fonts/YekanBakh-SemiBold.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Yekan Bakh";
+  src: url("~/assets/fonts/YekanBakh-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+body {
+  font-family: "Yekan Bakh", sans-serif;
+}

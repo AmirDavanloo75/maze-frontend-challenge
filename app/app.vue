@@ -1,6 +1,8 @@
+<script setup>
+// ایمپورت مستقیم فایل CSS
+import '~/assets/css/main.css'
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtPage />
 </template>
