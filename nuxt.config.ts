@@ -9,5 +9,15 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vueuse/nuxt",
     "@nuxtjs/tailwindcss",
+    '@nuxt/icon'
   ],
+
+    app: {
+      head: {
+        htmlAttrs: {
+          dir: 'rtl',
+          lang: 'fa'
+        }
+      }
+    }
 });

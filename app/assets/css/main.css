@@ -22,4 +22,9 @@
 
 body {
   font-family: "Yekan Bakh", sans-serif;
+  direction: rtl;
+}
+
+.container-custom {
+  @apply mx-auto w-full max-w-[1280px] px-6;
 }
