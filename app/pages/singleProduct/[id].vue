@@ -1,0 +1,30 @@
+<template>
+  <div class="min-h-screen bg-[#e9edf5] px-4 py-6 pb-20 md:px-16" dir="rtl">
+    <div class="max-w-6xl mx-auto space-y-6">
+      <!-- Product Breadcrumbs -->
+      <ProductBreadcrumbs />
+
+      <!-- Product Image with Title -->
+      <ProductBoxImage :image="product.image" :title="product.title" />
+
+      <!-- Specifications -->
+      <ProductSpecifications :product="product" />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+const route = useRoute();
+const { products } = useProducts();
+
+const product = computed(() =>
+  products.find((item) => item.id === Number(route.params.id))
+);
+
+if (!product.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Product Not Found",
+  });
+}
+</script>

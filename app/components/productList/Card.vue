@@ -12,7 +12,7 @@
       </h3>
 
       <NuxtLink
-        :to="`/product/${product.id}`"
+        :to="`/singleProduct/${product.id}`"
         class="flex items-center justify-center gap-2 rounded-full border border-gray-300 py-2 text-sm font-bold text-pink-600 transition hover:bg-pink-600 hover:text-white"
       >
         مشاهده جزئیات

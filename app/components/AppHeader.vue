@@ -37,7 +37,7 @@
           aria-label="تماس با ما"
         >
           <span class="font-['Yekan_Bakh'] font-bold text-sm leading-4"> تماس </span>
-          <Icon name="lucide:phone-call" class="w-5 h-5 text-white" />
+          <Icon name="solar:phone-calling-rounded-outline" class="w-5 h-5 text-white" />
         </NuxtLink>
       </div>
     </div>

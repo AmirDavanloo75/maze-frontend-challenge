@@ -12,12 +12,26 @@ export default defineNuxtConfig({
     '@nuxt/icon'
   ],
 
-    app: {
-      head: {
-        htmlAttrs: {
-          dir: 'rtl',
-          lang: 'fa'
-        }
+  app: {
+    head: {
+      htmlAttrs: {
+        dir: 'rtl',
+        lang: 'fa'
       }
     }
+  },
+
+  typescript: {
+    strict: true,
+    typeCheck: false,
+    shim: false,
+    tsConfig: {
+      compilerOptions: {
+        moduleResolution: 'node',
+        allowJs: true
+      }
+    }
+  },
+
+
 });
