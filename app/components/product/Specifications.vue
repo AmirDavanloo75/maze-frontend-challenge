@@ -43,9 +43,9 @@ const specifications = computed(() => [
   { label: "دسته‌بندی", value: props.product?.category ?? "-" },
   {
     label: "رتبه",
-    value: props.product?.rating ?? 0,
+    value: props.product?.rating.rate ?? 0,
     type: "rating",
   },
-  { label: "تعداد", value: props.product?.quantity ?? 0 },
+  { label: "تعداد", value: props.product?.rating.count ?? 0 },
 ]);
 </script>

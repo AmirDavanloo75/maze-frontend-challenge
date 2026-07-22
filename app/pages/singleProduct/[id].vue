@@ -14,17 +14,13 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-const { products } = useProducts();
+const route = useRoute()
+const productId = Number(route.params.id)
 
-const product = computed(() =>
-  products.find((item) => item.id === Number(route.params.id))
-);
+const { fetchProductById } = useProductService()
+const { data: product, pending, error } = await fetchProductById(productId)
 
-if (!product.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Product Not Found",
-  });
+if (!pending && !product.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Product Not Found' })
 }
 </script>

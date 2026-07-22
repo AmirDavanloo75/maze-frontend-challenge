@@ -7,9 +7,11 @@
 </template>
 
 <script setup lang="ts">
-const products = Array.from({ length: 12 }, (_, i) => ({
-  id: i + 1,
-  title: "درب اتوماتیک ریلی مدل Face SW2",
-  image: "/images/productImage.png",
-}));
+const { fetchAllProducts } = useProductService();
+
+const { data: products, pending, error } = await fetchAllProducts();
+
+if (error.value) {
+  console.error("Failed to fetch products:", error.value);
+}
 </script>
