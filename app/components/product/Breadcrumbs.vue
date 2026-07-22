@@ -5,7 +5,7 @@
       <li v-for="(item, index) in breadcrumbs" :key="index">
         <div class="flex items-center gap-2">
           <template v-if="index > 0">
-            <Icon name="ic:twotone-less-than" class="w-4 h-4 text-[#6783a0]"" />
+            <Icon name="ic:twotone-less-than" class="w-4 h-4 text-[#6783a0]" />
           </template>
 
           <template v-if="item.to">

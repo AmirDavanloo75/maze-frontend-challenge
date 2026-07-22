@@ -20,7 +20,10 @@ const productId = Number(route.params.id)
 const { fetchProductById } = useProductService()
 const { data: product, pending, error } = await fetchProductById(productId)
 
-if (!pending && !product.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Product Not Found' })
+if (error.value || !product.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'محصول مورد نظر یافت نشد'
+  })
 }
 </script>
