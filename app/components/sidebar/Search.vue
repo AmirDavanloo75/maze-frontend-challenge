@@ -13,7 +13,7 @@
 
         <input
           id="search-input"
-          v-model="searchQuery"
+          v-model="localSearchQuery"
           type="text"
           placeholder="جستجو..."
           class="w-0 flex-1 bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
@@ -22,7 +22,7 @@
         />
 
         <button
-          v-if="searchQuery"
+          v-if="localSearchQuery"
           type="button"
           @click="clearSearch"
           class="flex items-center justify-center text-gray-400 transition-colors hover:text-gray-600 flex-shrink-0"
@@ -44,15 +44,25 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
+import { useProductFilterStore } from "~/stores/productFilter";
 
-const searchQuery = ref("");
+const filterStore = useProductFilterStore();
+const localSearchQuery = ref("");
+
+watch(
+  () => filterStore.searchQuery,
+  (newVal) => {
+    localSearchQuery.value = newVal;
+  }
+);
 
 const handleSearch = () => {
-  console.log("Searching for:", searchQuery.value);
+  filterStore.setSearchQuery(localSearchQuery.value);
 };
 
 const clearSearch = () => {
-  searchQuery.value = "";
+  localSearchQuery.value = "";
+  filterStore.setSearchQuery("");
 };
 </script>
