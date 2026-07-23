@@ -7,4 +7,3 @@
     <SidebarCategory />
   </aside>
 </template>
->
