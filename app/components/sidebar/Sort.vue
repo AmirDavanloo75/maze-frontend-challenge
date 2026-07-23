@@ -48,10 +48,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useProductFilterStore } from "~/stores/productFilter";
 
 const isOpen = ref(true);
-const selectedSort = ref("numberSL");
+const filterStore = useProductFilterStore();
+
+const selectedSort = computed({
+  get: () => filterStore.selectedSort,
+  set: (value: string) => filterStore.setSelectedSort(value),
+});
 
 const sortOptions = [
   { value: "numberSL", label: "تعداد: کم به زیاد" },
