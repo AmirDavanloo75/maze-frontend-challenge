@@ -1,75 +1,145 @@
-# Nuxt Minimal Starter
+# 🛍️ فروشگاه ماز - چالش Frontend
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+پروژه چالش فنی **توسعه‌دهنده Frontend** شرکت ماز.
 
-## Setup
+## 📋 درباره پروژه
 
-Make sure to install dependencies:
+این یک اپلیکیشن فروشگاه آنلاین است که با استفاده از **Nuxt 4**، **Vue.js 3**، **TypeScript** و **Tailwind CSS** توسعه داده شده است. داده‌ها از [Fake Store API](https://fakestoreapi.com/) دریافت می‌شوند.
+
+## ✨ ویژگی‌ها
+
+- ✅ **Server-Side Rendering (SSR)** برای SEO بهینه
+- ✅ **TypeScript** برای Type Safety کامل
+- ✅ **Pinia** برای مدیریت State
+- ✅ **Tailwind CSS** برای طراحی Responsive
+- ✅ **Lazy Loading** تصاویر با NuxtPicture
+- ✅ **کد تمیز و ماژولار** با معماری Feature-Based
+
+## 🏗️ معماری پروژه
+
+```
+app/
+├── components/          # کامپوننت‌های UI
+│   ├── product/         # کامپوننت‌های مرتبط با محصول تکی
+│   ├── productList/     # کامپوننت‌های لیست محصولات
+│   ├── sidebar/         # کامپوننت‌های سایدبار
+│   └── footer/          # کامپوننت‌های فوتر
+├── composables/         # Composable functions
+├── layouts/             # Layout های صفحه
+├── pages/               # صفحات اپلیکیشن
+├── repositories/        # لایه ارتباط با API
+├── stores/              # Pinia stores
+├── types/               # TypeScript interfaces
+└── utils/               # Utility functions
+```
+
+### الگوی معماری
+
+```
+Repository → Service/Composable → Store → Component
+```
+
+- **Repository:** مسئول مستقیم تماس با API
+- **Service/Composable:** منطق تجاری و تبدیل داده
+- **Store:** مدیریت State سراسری
+- **Component:** نمایش UI
+
+## 🚀 نحوه اجرا
+
+### نصب وابستگی‌ها
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### اجرای سرور توسعه
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+اپلیکیشن در آدرس `http://localhost:3000` در دسترس خواهد بود.
 
-Build the application for production:
+### Build برای Production
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+### پیش‌نمایش Build
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 🎨 طراحی UI
+
+طراحی رابط کاربری بر اساس [Figma Design](https://www.figma.com/design/2vwsqBfz6b8RD5394y9oIJ/Front-Test) پیاده‌سازی شده است.
+
+## 🔧 تکنولوژی‌های استفاده شده
+
+| تکنولوژی | نسخه | کاربرد |
+|----------|------|--------|
+| Nuxt 4 | Latest | Framework اصلی |
+| Vue.js 3 | Latest | UI Library |
+| TypeScript | 5.x | Type Safety |
+| Tailwind CSS | 3.x | Styling |
+| Pinia | Latest | State Management |
+| Nuxt Icon | Latest | آیکون‌ها |
+| Fake Store API | - | منبع داده |
+
+## 📦 ساختار کامیت‌ها
+
+این پروژه از [Conventional Commits](https://www.conventionalcommits.org/) پیروی می‌کند:
+
+- `feat:` اضافه کردن ویژگی جدید
+- `fix:` رفع باگ
+- `refactor:` بهبود کد بدون تغییر عملکرد
+- `chore:` تغییرات build یا tooling
+
+## 🎯 نکات کلیدی پیاده‌سازی
+
+### 1. Type Safety
+- استفاده از TypeScript در تمام فایل‌ها
+- تعریف Interface های مرکزی در `types/`
+- استفاده از Generic Types در `useAsyncData` و `useFetch`
+
+### 2. Performance Optimization
+- استفاده از NuxtPicture
+- Lazy Loading تصاویر
+
+### 3. Code Quality
+- جداسازی لایه‌ها (Repository, Service, Store, Component)
+- استفاده از Composable Pattern
+- رعایت اصل Separation of Concerns
+
+### 4. Error Handling
+- مدیریت خطا در تمام لایه‌ها
+- نمایش UI مناسب برای وضعیت‌های Error و Empty
+- استفاده از `createError` برای خطاهای 404 و 500
+
+### 5. SEO
+- استفاده از `useSeoMeta` برای Meta Tags داینامیک
+
+### 6. Accessibility
+- استفاده از `aria-label`، `aria-expanded`، `aria-current`
+- Semantic HTML (`nav`, `main`, `aside`, `section`)
+- Keyboard navigation support
+
+## 📸 اسکرین‌شات‌ها
+
+### صفحه لیست محصولات
+![لیست محصولات](/public/images/productListPage.png)
+
+
+## 👨‍💻 توسعه‌دهنده
+
+**امیر احمد دوانلو** — Frontend Developer
+
+---
+
+<div align="center">
+
+ساخته شده برای چالش ماز
+
+</div>
