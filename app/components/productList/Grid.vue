@@ -1,13 +1,6 @@
 <template>
   <section>
-    <div v-if="pending" class="text-center py-10">
-      <Icon
-        name="line-md:loading-loop"
-        class="w-12 h-12 text-pink-600 mx-auto animate-spin"
-      />
-    </div>
-
-    <div v-else-if="filteredProducts.length === 0" class="text-center py-20">
+    <div v-show="filteredProducts.length === 0" class="text-center py-20">
       <Icon
         name="mdi:package-variant-closed"
         class="w-16 h-16 text-gray-300 mx-auto mb-4"
@@ -16,10 +9,12 @@
       <button
         @click="filterStore.clearFilters"
         class="mt-4 px-6 py-2 bg-pink-600 text-white rounded-xl hover:bg-pink-700 transition font-medium"
-      ></button>
+      >
+      حذف فیلترها
+      </button>
     </div>
 
-    <div v-else class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div v-show="filteredProducts.length > 0" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
       <ProductListCard
         v-for="product in filteredProducts"
         :key="product.id"

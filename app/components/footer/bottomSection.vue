@@ -11,7 +11,7 @@
           <p class="text-gray-600 text-sm leading-relaxed">
             تمامی حقوق مادی و معنوی این وبسایت متعلق به می‌باشد و هر
             <br />
-                        گونه کپی برداری پیگرد قانونی دارد.
+            گونه کپی برداری پیگرد قانونی دارد.
           </p>
         </div>
 
@@ -36,15 +36,13 @@
         <div
           v-for="badge in trustBadges"
           :key="badge.alt"
-          class="w-[72px] h-[72px] bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden"
+          class="w-24 h-24 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden"
         >
-          <NuxtImg
+          <NuxtPicture
             :src="badge.src"
             :alt="badge.alt"
-            class="w-full h-full object-contain p-2"
+            :img-attrs="{ class: 'w-full h-full object-contain p-2' }"
             loading="lazy"
-            width="72"
-            height="72"
           />
         </div>
       </div>

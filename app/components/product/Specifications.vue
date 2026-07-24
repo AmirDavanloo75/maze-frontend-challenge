@@ -9,11 +9,11 @@
         class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4"
       >
         <div
-          class="p-4 bg-[#F8FAFC] rounded-tr-2xl rounded-br-2xl rounded-tl rounded-bl flex items-center"
+          class="p-4 bg-[#F5F7FA] rounded-tr-2xl rounded-br-2xl rounded-tl rounded-bl flex items-center"
         >
           <span class="text-gray-600 font-medium">{{ spec.label }}</span>
         </div>
-        <div class="p-4 bg-[#F8FAFC] rounded-tl-2xl rounded-bl-2xl rounded-tr rounded-br">
+        <div class="p-4 bg-[#F5F7FA] rounded-tl-2xl rounded-bl-2xl rounded-tr rounded-br text-left text-justify" dir="ltr">
           <span class="text-gray-800 font-medium">{{ spec.value }}</span>
         </div>
       </div>

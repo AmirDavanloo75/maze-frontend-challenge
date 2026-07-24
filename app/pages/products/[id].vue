@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[#e9edf5] px-4 py-6 pb-20 md:px-16" dir="rtl">
+  <div class="min-h-screen bg-[#e9edf5] px-4 py-6 pb-20 md:px-16 w-[#1112px]" dir="rtl">
     <div class="max-w-6xl mx-auto space-y-6">
       <!-- Product Breadcrumbs -->
       <ProductBreadcrumbs />

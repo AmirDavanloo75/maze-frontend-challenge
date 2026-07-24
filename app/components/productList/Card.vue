@@ -1,14 +1,22 @@
 <template>
   <div class="overflow-hidden rounded-3xl bg-white shadow-sm transition hover:shadow-md">
-    <img
-      :src="product.image"
-      :alt="product.title"
-      class="h-60 w-full object-cover p-2 rounded-3xl"
-    />
+    <div class="h-60 w-full rounded-3xl overflow-hidden">
+      <NuxtPicture
+        :src="product.image"
+        :alt="product.title"
+        :img-attrs="{ class: 'w-full h-full object-contain p-2' }"
+        format="webp"
+        quality="80"
+        loading="lazy"
+        width="240"
+        height="240"
+      />
+    </div>
 
     <div class="p-4">
       <h3
-        class="block text-base font-bold text-slate-800 mb-4 truncate"
+        class="block text-base font-bold text-slate-800 mb-4 truncate text-left"
+        dir="ltr"
         :title="product.title"
       >
         {{ product.title }}
