@@ -32,4 +32,22 @@ definePageMeta({
     label: "محصول",
   },
 });
+
+useSeoMeta({
+  title: () => `${product.value?.title} | فروشگاه ماز`,
+  description: () => product.value?.description || 'مشاهده جزئیات محصول',
+  
+  ogTitle: () => product.value?.title || 'محصول',
+  ogDescription: () => product.value?.description || 'مشاهده جزئیات محصول',
+  ogImage: () => product.value?.image || '',
+  ogType: 'product',
+  ogUrl: () => `https://maze.com/products/${productId}`,
+  
+  twitterCard: 'summary_large_image',
+  twitterTitle: () => product.value?.title || 'محصول',
+  twitterDescription: () => product.value?.description || 'مشاهده جزئیات محصول',
+  twitterImage: () => product.value?.image || '',
+  
+  robots: 'index, follow',
+})
 </script>
