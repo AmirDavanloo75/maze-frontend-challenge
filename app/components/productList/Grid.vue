@@ -14,7 +14,7 @@
       </button>
     </div>
 
-    <div v-show="filteredProducts.length > 0" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div v-show="filteredProducts.length > 0" class="grid grid-cols-1 gap-6 md:grid-cols-3 xl:grid-cols-3">
       <ProductListCard
         v-for="product in filteredProducts"
         :key="product.id"

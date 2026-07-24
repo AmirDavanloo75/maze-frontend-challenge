@@ -1,10 +1,13 @@
 <template>
   <header
-    class="w-full h-[80px] lg:h-[120px] rounded-b-2xl bg-white/80 backdrop-blur-[20px] shadow-sm mx-auto"
+    class="w-full h-[80px] lg:h-[120px] rounded-b-2xl bg-white/80 backdrop-blur-[20px] shadow-sm mx-auto z-40"
   >
-    <div class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-4 lg:px-8">
+    <div
+      class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-4 lg:px-8"
+    >
       <div class="w-[100px] hidden lg:block"></div>
 
+      <!-- Navigation - Desktop -->
       <nav class="hidden lg:flex flex-1 items-center justify-center">
         <div class="flex items-center gap-6">
           <NuxtLink
@@ -30,49 +33,62 @@
 
       <!-- Mobile Menu Button -->
       <button
-        class="lg:hidden p-2 text-[#122a51] hover:text-[#E20054] transition-colors"
+        class="lg:hidden w-12 h-12 bg-white border-2 border-[#E20054] rounded-xl flex items-center justify-center shadow-sm hover:bg-pink-50 transition-colors"
         aria-label="منوی اصلی"
         @click="toggleMobileMenu"
       >
-        <Icon :name="isMobileMenuOpen ? 'mdi:close' : 'mdi:menu'" class="w-6 h-6" />
+        <Icon
+          :name="isMobileMenuOpen ? 'mdi:close' : 'mdi:menu'"
+          class="w-6 h-6 text-[#E20054]"
+        />
       </button>
 
       <!-- Action Button -->
       <div class="flex items-center gap-4">
         <NuxtLink
           to="/contact"
-          class="flex items-center justify-center gap-2 bg-[#E20054] h-10 rounded-2xl px-4 text-white transition-opacity hover:opacity-90"
+          class="hidden lg:flex md:flex items-center justify-center gap-2 bg-[#E20054] h-10 rounded-2xl px-4 text-white transition-opacity hover:opacity-90"
           aria-label="تماس با ما"
         >
           <span class="font-bold text-sm">تماس</span>
           <Icon name="solar:phone-calling-rounded-outline" class="w-5 h-5" />
         </NuxtLink>
       </div>
-    </div>
 
-    <!-- Mobile Menu -->
-    <Transition name="slide-down">
-      <div
-        v-if="isMobileMenuOpen"
-        class="lg:hidden absolute top-[80px] left-0 right-0 bg-white shadow-lg border-t"
+      <!-- Action Button For Mobile -->
+
+      <NuxtLink
+        to="/contact"
+        class="lg:hidden md:hidden group relative flex items-center justify-center w-12 h-12 rounded-xl border-2 border-pink-500 hover:bg-pink-100 transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
+        aria-label="تماس تلفنی"
       >
-        <nav class="flex flex-col p-4">
-          <NuxtLink
-            v-for="item in navItems"
-            :key="item.path"
-            :to="item.path"
-            class="flex items-center gap-3 py-3 px-4 rounded-lg text-[#122a51] hover:bg-gray-100 transition-colors"
-            :class="{ 'text-[#E20054] bg-pink-50': isActive(item.path) }"
-            :aria-current="isActive(item.path) ? 'page' : undefined"
-            @click="closeMobileMenu"
-          >
-            <Icon :name="item.icon" class="w-5 h-5" />
-            <span class="font-medium">{{ item.name }}</span>
-          </NuxtLink>
-        </nav>
-      </div>
-    </Transition>
+        <Icon name="solar:phone-calling-rounded-outline" class="w-5 h-5 text-pink-500" />
+      </NuxtLink>
+    </div>
   </header>
+
+  <!-- Mobile Menu -->
+  <Transition name="slide-down">
+    <div
+      v-if="isMobileMenuOpen"
+      class="lg:hidden absolute top-[80px] left-0 right-0 bg-white shadow-lg border-t z-40"
+    >
+      <nav class="flex flex-col p-4">
+        <NuxtLink
+          v-for="item in navItems"
+          :key="item.path"
+          :to="item.path"
+          class="flex items-center gap-3 py-3 px-4 rounded-lg text-[#122a51] hover:bg-gray-100 transition-colors"
+          :class="{ 'text-[#E20054] bg-pink-50': isActive(item.path) }"
+          :aria-current="isActive(item.path) ? 'page' : undefined"
+          @click="closeMobileMenu"
+        >
+          <Icon :name="item.icon" class="w-5 h-5" />
+          <span class="font-medium">{{ item.name }}</span>
+        </NuxtLink>
+      </nav>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">

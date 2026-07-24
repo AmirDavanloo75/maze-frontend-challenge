@@ -38,7 +38,7 @@
             v-model="selectedCategories"
             :value="category.id"
             type="checkbox"
-            class="w-5 h-5 accent-pink-600 rounded border-gray-300 focus:ring-pink-500 cursor-pointer"
+            class="flex-shrink-0 w-5 h-5 accent-pink-600 rounded border-gray-300 focus:ring-pink-500 cursor-pointer"
           />
 
           <div class="flex items-center justify-between flex-1 gap-3">
