@@ -11,7 +11,7 @@
           <p class="text-gray-600 text-sm leading-relaxed">
             تمامی حقوق مادی و معنوی این وبسایت متعلق به می‌باشد و هر
             <br />
-            گونه کپی برداری پیگرد قانونی دارد.
+                        گونه کپی برداری پیگرد قانونی دارد.
           </p>
         </div>
 
@@ -22,9 +22,11 @@
             :key="social.name"
             :href="social.href"
             :aria-label="social.name"
-            class="w-8 h-8 rounded-full bg-[#eb7fa9] flex items-center justify-center text-white hover:bg-red-700 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-8 h-8 rounded-full bg-[#eb7fa9] flex items-center justify-center text-white hover:bg-[#E20054] transition-colors"
           >
-            <Icon :name="social.icon" class="w-6 h-6" />
+            <Icon :name="social.icon" class="w-5 h-5" />
           </a>
         </div>
       </div>
@@ -34,12 +36,15 @@
         <div
           v-for="badge in trustBadges"
           :key="badge.alt"
-          class="w-[72px] h-[72px] bg-gray-50 rounded-lg flex items-center justify-center"
+          class="w-[72px] h-[72px] bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden"
         >
-          <img
+          <NuxtImg
             :src="badge.src"
             :alt="badge.alt"
-            class="w-[72px] h-[72px] object-contain"
+            class="w-full h-full object-contain p-2"
+            loading="lazy"
+            width="72"
+            height="72"
           />
         </div>
       </div>
@@ -47,17 +52,28 @@
   </div>
 </template>
 
-<script setup>
-const footerSocials = [
-  { name: "لینکدین", icon: "mdi:linkedin", href: "#" },
-  { name: "یوتیوب", icon: "mdi:youtube", href: "#" },
-  { name: "توییتر", icon: "mdi:twitter", href: "#" },
-  { name: "اینستاگرام", icon: "mdi:instagram", href: "#" },
-  { name: "تلگرام", icon: "mdi:telegram", href: "#" },
-];
+<script setup lang="ts">
+interface SocialLink {
+  name: string
+  icon: string
+  href: string
+}
 
-const trustBadges = [
-  { src: "/images/neshaneMelli.png", alt: "نشان ملی" },
-  { src: "/images/enamad.png", alt: "اینماد" },
-];
+interface TrustBadge {
+  src: string
+  alt: string
+}
+
+const footerSocials: SocialLink[] = [
+  { name: 'لینکدین', icon: 'mdi:linkedin', href: '#' },
+  { name: 'یوتیوب', icon: 'mdi:youtube', href: '#' },
+  { name: 'توییتر', icon: 'mdi:twitter', href: '#' },
+  { name: 'اینستاگرام', icon: 'mdi:instagram', href: '#' },
+  { name: 'تلگرام', icon: 'mdi:telegram', href: '#' },
+]
+
+const trustBadges: TrustBadge[] = [
+  { src: '/images/neshaneMelli.png', alt: 'نشان ملی' },
+  { src: '/images/enamad.png', alt: 'اینماد' },
+]
 </script>

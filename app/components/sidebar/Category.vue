@@ -67,21 +67,17 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, computed } from "vue";
 import { useProductFilterStore } from "~/stores/productFilter";
 
 const isOpen = ref(true);
 const categories = ref([]);
 const loading = ref(true);
 const filterStore = useProductFilterStore();
+const { fetchAllProducts, fetchCategory } = useProductService();
 
-const { data: catsData } = await useAsyncData("categories", () =>
-  $fetch("https://fakestoreapi.com/products/categories")
-);
-
-const { data: allProducts } = await useAsyncData("products-all", () =>
-  $fetch("https://fakestoreapi.com/products")
-);
+const { data: catsData } = await fetchCategory();
+const { data: allProducts } = await fetchAllProducts();
 
 if (catsData.value && allProducts.value) {
   categories.value = catsData.value.map((cat) => ({
@@ -93,10 +89,10 @@ if (catsData.value && allProducts.value) {
 
 loading.value = false;
 
-const selectedCategories = ref([]);
-const isSelected = (id) => selectedCategories.value.includes(id);
-
-watch(selectedCategories, (newVal) => {
-  filterStore.setSelectedCategories(newVal);
+const selectedCategories = computed({
+  get: () => filterStore.selectedCategories,
+  set: (value) => filterStore.setSelectedCategories(value)
 });
+
+const isSelected = (id) => selectedCategories.value.includes(id);
 </script>

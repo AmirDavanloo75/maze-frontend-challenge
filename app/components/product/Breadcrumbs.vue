@@ -1,7 +1,7 @@
 <template>
   <nav class="flex items-center text-sm text-gray-600" dir="rtl">
     <ol class="flex items-center gap-2">
-      
+    
       <li>
         <NuxtLink to="/" class="hover:text-[#E20054] transition-colors flex items-center">
           <Icon name="hugeicons:home-05" class="w-5 h-5 text-gray-400" />
@@ -30,19 +30,17 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-const breadcrumbs = useBreadcrumbs()
-
-const isProductPage = computed(() => route.name === 'products-id')
-const productTitle = ref('در حال بارگذاری...')
+const route = useRoute();
+const breadcrumbs = useBreadcrumbs();
+const { fetchProductById, fetchBreadcrumb } = useProductService();
+const isProductPage = computed(() => route.name === "products-id");
+const productTitle = ref("در حال بارگذاری...");
 
 if (isProductPage.value) {
-  const { data: product } = await useAsyncData(`breadcrumb-product-${route.params.id}`, () =>
-    $fetch(`https://fakestoreapi.com/products/${route.params.id}`)
-  )
-  
+  const { data: product } = await fetchBreadcrumb(route.params.id);
+
   if (product.value) {
-    productTitle.value = product.value.title
+    productTitle.value = product.value.title;
   }
 }
 </script>

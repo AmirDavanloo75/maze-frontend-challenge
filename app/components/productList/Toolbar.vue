@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="hasActiveFilters"
     class="flex items-center justify-between w-full p-4 bg-gray-50 rounded-2xl mb-6"
   >
     <span class="text-gray-700 text-sm font-medium">فیلترهای اعمال شده</span>
@@ -15,7 +14,9 @@
           {{ filterStore.searchQuery }}
         </span>
         <button
+          type="button"
           @click="removeSearch"
+          aria-label="حذف فیلتر جستجو"
           class="flex items-center justify-center w-5 h-5 -mr-1"
         >
           <Icon
@@ -35,7 +36,9 @@
           {{ category }}
         </span>
         <button
+          type="button"
           @click="removeCategory(category)"
+          :aria-label="`حذف فیلتر دسته‌بندی ${category}`"
           class="flex items-center justify-center w-5 h-5 -mr-1"
         >
           <Icon
@@ -51,7 +54,9 @@
           {{ translateSort(filterStore.selectedSort) }}
         </span>
         <button
+          type="button"
           @click="removeSort"
+          aria-label="حذف فیلتر مرتب‌سازی"
           class="flex items-center justify-center w-5 h-5 -mr-1"
         >
           <Icon
@@ -64,27 +69,17 @@
   </div>
 </template>
 
-<script setup>
-import { computed } from "vue";
-import { useProductFilterStore } from "~/stores/productFilter";
+<script setup lang="ts">
 
 const filterStore = useProductFilterStore();
 
-const hasActiveFilters = computed(() => {
-  return (
-    filterStore.searchQuery ||
-    filterStore.selectedCategories.length > 0 ||
-    filterStore.selectedSort
-  );
-});
-
-function translateSort(sort) {
-  const translations = {
-    numberSL: "تعداد: کم به زیاد",
-    numberLS: "تعداد: زیاد به کم",
-    rankSL: "رتبه: کم به زیاد",
-    rankLS: "رتبه: زیاد به کم",
-  };
+const translateSort = (sort: SortOption): string => {
+  const translations: Record<SortOption, string> = {
+    numberSL: 'تعداد: کم به زیاد',
+    numberLS: 'تعداد: زیاد به کم',
+    rankSL: 'رتبه: کم به زیاد',
+    rankLS: 'رتبه: زیاد به کم',
+  }
   return translations[sort] || sort;
 }
 
@@ -92,7 +87,7 @@ const removeSearch = () => {
   filterStore.setSearchQuery("");
 };
 
-const removeCategory = (category) => {
+const removeCategory = (category: string) => {
   const updated = filterStore.selectedCategories.filter((c) => c !== category);
   filterStore.setSelectedCategories(updated);
 };

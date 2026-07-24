@@ -1,4 +1,3 @@
-<!-- components/ComingSoon.vue -->
 <template>
   <div class="min-h-screen w-full flex items-center justify-center bg-[#e9edf5]">
     <div class="text-center px-4">

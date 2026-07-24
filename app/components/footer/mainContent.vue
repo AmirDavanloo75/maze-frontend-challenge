@@ -48,15 +48,17 @@
         <li v-for="social in socialLinks" :key="social.name">
           <a
             :href="social.href"
-            :class="`flex items-center gap-3 text-gray-100 ${social.hoverColor} transition-colors`"
-            :aria-label="social.name"
+            :class="`flex items-center gap-3 text-gray-600 ${social.hoverColor} transition-colors`"
+            :aria-label="`دنبال کردن ما در ${social.name}`"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <div
-              class="w-8 h-8 rounded-full bg-[#6783a0] flex items-center justify-center hover:bg-gray-100 transition-colors"
+              class="w-8 h-8 rounded-full bg-[#6783a0] flex items-center justify-center hover:bg-[#E20054] transition-colors"
             >
-              <Icon :name="social.icon" class="w-6 h-6" />
+              <Icon :name="social.icon" class="w-6 h-6 text-white" />
             </div>
-            <span class="text-gray-600">{{ social.name }}</span>
+            <span>{{ social.name }}</span>
           </a>
         </li>
       </ul>
@@ -64,38 +66,50 @@
   </div>
 </template>
 
-<script setup>
-const quickLinks = [
-  { title: "درباره ما", to: "/about" },
-  { title: "بلاگ", to: "/blog" },
-  { title: "تماس با ما", to: "/contact" },
-  { title: "خدمات پس از فروش", to: "/after-sales" },
-];
+<script setup lang="ts">
+interface FooterLink {
+  title: string
+  to: string
+}
 
-const guideLinks = [
-  { title: "قوانین و مقررات", to: "/rules" },
-  { title: "دریافت مشاوره", to: "/consultation" },
-  { title: "انتقادات و پیشنهادات", to: "/feedback" },
-];
+interface SocialLink {
+  name: string
+  icon: string
+  href: string
+  hoverColor: string
+}
 
-const socialLinks = [
+const quickLinks: FooterLink[] = [
+  { title: 'درباره ما', to: '/about' },
+  { title: 'بلاگ', to: '/blog' },
+  { title: 'تماس با ما', to: '/contact' },
+  { title: 'خدمات پس از فروش', to: '/after-sales' },
+]
+
+const guideLinks: FooterLink[] = [
+  { title: 'قوانین و مقررات', to: '/rules' },
+  { title: 'دریافت مشاوره', to: '/consultation' },
+  { title: 'انتقادات و پیشنهادات', to: '/feedback' },
+]
+
+const socialLinks: SocialLink[] = [
   {
-    name: "تلگرام",
-    icon: "mdi:telegram",
-    href: "#",
-    hoverColor: "hover:text-blue-600",
+    name: 'تلگرام',
+    icon: 'mdi:telegram',
+    href: '#',
+    hoverColor: 'hover:text-blue-500',
   },
   {
-    name: "اینستاگرام",
-    icon: "mdi:instagram",
-    href: "#",
-    hoverColor: "hover:text-pink-600",
+    name: 'اینستاگرام',
+    icon: 'mdi:instagram',
+    href: '#',
+    hoverColor: 'hover:text-pink-600',
   },
   {
-    name: "لینکدین",
-    icon: "mdi:linkedin",
-    href: "#",
-    hoverColor: "hover:text-blue-700",
+    name: 'لینکدین',
+    icon: 'mdi:linkedin',
+    href: '#',
+    hoverColor: 'hover:text-blue-700',
   },
-];
+]
 </script>

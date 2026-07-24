@@ -22,30 +22,26 @@
 </template>
 
 <script setup lang="ts">
+import type { Product } from "~/types/product";
+
 interface Props {
-  product: {
-    price: number;
-    description: string;
-    category?: string;
-    rating?: string;
-    quantity?: number;
-  };
+  product: Product;
 }
 
 const props = defineProps<Props>();
-console.log(props.product);
-const formatPrice = (price: number) =>
-  `${new Intl.NumberFormat("fa-IR").format(price)} تومان`;
 
 const specifications = computed(() => [
-  { label: "قیمت", value: formatPrice(props.product?.price ?? 0) },
-  { label: "توضیحات", value: props.product?.description ?? "-" },
-  { label: "دسته‌بندی", value: props.product?.category ?? "-" },
+  { label: "قیمت", value: formatPrice(props.product.price) },
+  { label: "توضیحات", value: props.product.description || "-" },
+  { label: "دسته‌بندی", value: props.product.category || "-" },
   {
     label: "رتبه",
-    value: props.product?.rating.rate ?? 0,
+    value: props.product.rating.rate,
     type: "rating",
   },
-  { label: "تعداد", value: props.product?.rating.count ?? 0 },
+  {
+    label: "تعداد نظرات",
+    value: props.product.rating.count,
+  },
 ]);
 </script>

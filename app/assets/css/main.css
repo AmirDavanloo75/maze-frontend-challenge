@@ -6,25 +6,29 @@
   font-family: "Yekan Bakh";
   src: url("~/assets/fonts/YekanBakh-Regular.woff") format("woff");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Yekan Bakh";
   src: url("~/assets/fonts/YekanBakh-SemiBold.woff") format("woff");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Yekan Bakh";
   src: url("~/assets/fonts/YekanBakh-Bold.woff") format("woff");
   font-weight: 700;
+  font-display: swap;
 }
 
 body {
-  font-family: "Yekan Bakh", sans-serif;
+  font-family: "Yekan Bakh", system-ui, sans-serif;
   direction: rtl;
+  text-rendering: optimizeLegibility;
 }
 
 .container-custom {
-  @apply mx-auto w-full max-w-[1280px] px-6;
+  @apply mx-auto w-full max-w-[1280px] px-4 md:px-6;
 }

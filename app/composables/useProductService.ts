@@ -13,8 +13,22 @@ export const useProductService = () => {
     })
   }
 
+  const fetchBreadcrumb = (id: number) => {
+    return useAsyncData(`breadcrumb-product-${id}`, () => productRepository.getById(id), {
+      server: true,
+    })
+  }
+
+  const fetchCategory = () => {
+    return useAsyncData('categories', () => productRepository.getCategory(), {
+      server: true,
+    })
+  }
+
   return {
     fetchAllProducts,
-    fetchProductById
+    fetchProductById,
+    fetchBreadcrumb,
+    fetchCategory
   }
 }

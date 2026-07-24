@@ -51,7 +51,6 @@ const filteredProducts = computed(() => {
   }
 
   result = filterStore.filterBySearch(result);
-
   result = filterStore.sortProducts(result);
 
   return result;

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full py-6 bg-[#e9edf5] p-16">
+  <div class="w-full py-6 bg-[#E9EDF5] p-16">
     <div class="flex items-start gap-6">
       <!-- Products -->
       <main class="flex-1 order-2">

@@ -48,23 +48,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { useProductFilterStore } from "~/stores/productFilter";
+import type { SortOption } from '~/types/product'
 
 const isOpen = ref(true);
 const filterStore = useProductFilterStore();
 
 const selectedSort = computed({
   get: () => filterStore.selectedSort,
-  set: (value: string) => filterStore.setSelectedSort(value),
-});
+  set: (value: SortOption) => filterStore.setSelectedSort(value),
+})
 
-const sortOptions = [
-  { value: "numberSL", label: "تعداد: کم به زیاد" },
-  { value: "numberLS", label: "تعداد: زیاد به کم" },
-  { value: "rankSL", label: "رتبه: کم به زیاد" },
-  { value: "rankLS", label: "رتبه: زیاد به کم" },
-];
+interface SortOptionItem {
+  value: SortOption
+  label: string
+}
 
-const isSelected = (value: string) => selectedSort.value === value;
+const sortOptions: SortOptionItem[] = [
+  { value: 'numberSL', label: 'تعداد: کم به زیاد' },
+  { value: 'numberLS', label: 'تعداد: زیاد به کم' },
+  { value: 'rankSL', label: 'رتبه: کم به زیاد' },
+  { value: 'rankLS', label: 'رتبه: زیاد به کم' },
+]
+
+const isSelected = (value: SortOption): boolean => selectedSort.value === value
 </script>

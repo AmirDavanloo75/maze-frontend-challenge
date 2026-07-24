@@ -12,3 +12,5 @@ export interface Product {
   image: string;
   rating: ProductRating;
 }
+
+export type SortOption = 'rankLS' | 'rankSL' | 'numberLS' | 'numberSL';
