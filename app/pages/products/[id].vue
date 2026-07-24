@@ -14,16 +14,22 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-const productId = Number(route.params.id)
+const route = useRoute();
+const productId = Number(route.params.id);
 
-const { fetchProductById } = useProductService()
-const { data: product, pending, error } = await fetchProductById(productId)
+const { fetchProductById } = useProductService();
+const { data: product, pending, error } = await fetchProductById(productId);
 
 if (error.value || !product.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'محصول مورد نظر یافت نشد'
-  })
+    statusMessage: "محصول مورد نظر یافت نشد",
+  });
 }
+
+definePageMeta({
+  breadcrumb: {
+    label: "محصول",
+  },
+});
 </script>

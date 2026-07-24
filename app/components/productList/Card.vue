@@ -7,12 +7,15 @@
     />
 
     <div class="p-4">
-      <h3 class="line-clamp-2 text-sm font-bold text-slate-800 min-h-[48px]">
+      <h3
+        class="block text-base font-bold text-slate-800 mb-4 truncate"
+        :title="product.title"
+      >
         {{ product.title }}
       </h3>
 
       <NuxtLink
-        :to="`/singleProduct/${product.id}`"
+        :to="`/products/${product.id}`"
         class="flex items-center justify-center gap-2 rounded-full border border-gray-300 py-2 text-sm font-bold text-pink-600 transition hover:bg-pink-600 hover:text-white"
       >
         مشاهده جزئیات
